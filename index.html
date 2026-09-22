@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>大邱 · 兩天一夜</title>
+<style>
+  :root{
+    --ink:#eae4d8;
+    --ink-dim:#a89f8f;
+    --bg:#14181a;
+    --bg-panel:#1b2123;
+    --bg-card:#20272a;
+    --line:#333c3d;
+    --cypress:#b3593a;
+    --oak:#a9773f;
+    --amber:#c99a52;
+    --moss:#4a5f4e;
+    --danger:#a85c4f;
+  }
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      --ink:#1e2422;
+      --ink-dim:#5c6360;
+      --bg:#f2efe8;
+      --bg-panel:#e9e4d8;
+      --bg-card:#ffffff;
+      --line:#d8d2c2;
+      --cypress:#8a4227;
+      --oak:#8a5f30;
+      --amber:#a97e3c;
+      --moss:#3d4f40;
+      --danger:#8a4438;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#eae4d8; --ink-dim:#a89f8f; --bg:#14181a; --bg-panel:#1b2123;
+    --bg-card:#20272a; --line:#333c3d; --cypress:#b3593a; --oak:#a9773f;
+    --amber:#c99a52; --moss:#4a5f4e; --danger:#a85c4f;
+  }
+
+  * { box-sizing: border-box; }
+  html,body{ margin:0; padding:0; }
+  html{ scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Serif TC","Georgia",serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .wrap{ max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+  header.hero{
+    padding: 56px 20px 40px;
+    border-bottom: 1px solid var(--line);
+    background:
+      radial-gradient(ellipse at top left, rgba(179,89,58,0.18), transparent 60%),
+      var(--bg);
+  }
+  .hero-inner{ max-width: 720px; margin: 0 auto; }
+  .eyebrow{
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--cypress);
+    margin: 0 0 14px;
+  }
+  h1{
+    font-size: clamp(30px, 7vw, 44px);
+    margin: 0 0 12px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .hero-sub{
+    color: var(--ink-dim);
+    font-size: 15px;
+    margin: 0;
+    max-width: 46ch;
+  }
+  .hero-meta{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    margin-top: 28px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+  .hero-meta div{ font-size: 13px; color: var(--ink-dim); }
+  .hero-meta strong{
+    display:block;
+    color: var(--ink);
+    font-family: "Noto Serif TC", serif;
+    font-size: 16px;
+    margin-top: 2px;
+  }
+
+  .day-section{ padding: 48px 20px 8px; }
+  .day-head{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    row-gap: 6px;
+    column-gap: 12px;
+    margin-bottom: 26px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 14px;
+  }
+  .day-num{
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--cypress);
+    border: 1px solid var(--cypress);
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .day-head h2{
+    margin: 0;
+    font-size: clamp(17px, 5.4vw, 22px);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .day-head span{
+    color: var(--ink-dim);
+    font-size: 12.5px;
+    white-space: nowrap;
+    flex-basis: 100%;
+  }
+  @media (min-width: 400px){
+    .day-head span{ flex-basis: auto; }
+  }
+
+  .timeline{ position: relative; padding-left: 26px; }
+  .timeline::before{
+    content:"";
+    position: absolute;
+    left: 6px; top: 6px; bottom: 6px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--cypress), var(--line) 90%);
+  }
+
+  .item{ position: relative; padding-bottom: 26px; }
+  .item:last-child{ padding-bottom: 0; }
+  .item::before{
+    content:"";
+    position: absolute;
+    left: -26px; top: 5px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--cypress);
+  }
+  .item.anchor::before{
+    background: var(--amber);
+    border-color: var(--amber);
+    width: 11px; height: 11px;
+    left: -27px;
+  }
+
+  .time{
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 12.5px;
+    color: var(--amber);
+    letter-spacing: 0.03em;
+    margin-bottom: 4px;
+  }
+  .item h3{
+    margin: 0 0 4px;
+    font-size: 16.5px;
+    font-weight: 600;
+  }
+  .item p{
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--ink-dim);
+    max-width: 52ch;
+  }
+  .tag{
+    display:inline-block;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    color: var(--cypress);
+    border: 1px solid var(--line);
+    padding: 1px 8px;
+    border-radius: 20px;
+    margin-top: 8px;
+  }
+  .tag.food{ color: var(--oak); }
+  .tag.move{ color: var(--ink-dim); }
+  .tag.caution{ color: var(--danger); }
+
+  .nlink{
+    display: inline-block;
+    margin-top: 8px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    color: var(--amber);
+    text-decoration: none;
+    border-bottom: 1px solid var(--amber);
+    padding-bottom: 1px;
+  }
+  .nlink:hover{ opacity: 0.8; }
+
+  footer{
+    text-align: center;
+    padding: 30px 20px 10px;
+    font-size: 12px;
+    color: var(--ink-dim);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+
+  @media (max-width: 480px){
+    header.hero{ padding: 44px 16px 32px; }
+    .day-section{ padding: 40px 16px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">TAIPEI — DAEGU · 10/3—10/4</p>
+    <h1>大邱，兩天一夜</h1>
+    <p class="hero-sub">無託運行李，全程大眾運輸。兩端由八公山與The ARC拉開，中段收攏回市區近代街區，不含採買行程。</p>
+    <div class="hero-meta">
+      <div>去程<strong>TPE 02:00 → TAE 05:25</strong></div>
+      <div>回程<strong>TAE 22:50 → TPE 00:25</strong></div>
+      <div>住宿<strong>大邱中城青年旅舍</strong></div>
+      <div>退房<strong>10/4 08:00（隨身，不寄放）</strong></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="day-section">
+    <div class="day-head">
+      <span class="day-num">DAY 1</span>
+      <h2>10月3日 週六</h2>
+      <span>落地日 · 八公山・桐華寺</span>
+    </div>
+    <div class="timeline">
+
+      <div class="item anchor">
+        <div class="time">05:25 – 06:15</div>
+        <h3>落地、清關</h3>
+        <p>大邱國際機場，無託運行李，可直接出關。</p>
+        <span class="tag move">移動</span>
+      </div>
+
+      <div class="item">
+        <div class="time">06:15 – 07:30</div>
+        <h3>公車101／401 → 阿羊橋站 → 轉乘急行1號</h3>
+        <p>阿羊橋站同時是急行1號的搭乘點，不需先進市區再繞，直接轉乘北上。</p>
+        <span class="tag move">移動</span>
+        <span class="tag caution">清晨班次請現場確認首班時間</span>
+      </div>
+
+      <div class="item anchor">
+        <div class="time">07:30 – 12:00</div>
+        <h3>八公山・桐華寺</h3>
+        <p>寺院區免費入場、無固定開放時間，可從一早開始走。大雄殿、統一藥師如來大佛之後，視纜車開放狀況決定是否上山。</p>
+        <span class="tag caution">纜車開放時間請現場確認，約09:00起</span>
+      </div>
+
+      <div class="item">
+        <div class="time">12:00 – 13:00</div>
+        <h3>午餐</h3>
+        <p>八公山山腳周邊解決。</p>
+        <span class="tag food">午餐</span>
+      </div>
+
+      <div class="item">
+        <div class="time">13:00 – 14:00</div>
+        <h3>原路返回市區</h3>
+        <p>急行1號 → 阿羊橋站，轉地鐵進市區。</p>
+        <span class="tag move">移動</span>
+      </div>
+
+      <div class="item">
+        <div class="time">14:00 – 15:00</div>
+        <h3>休息</h3>
+        <p>咖啡或稍作停留，視check-in狀況彈性調整。</p>
+      </div>
+
+      <div class="item anchor">
+        <div class="time">15:00</div>
+        <h3>辦理Check-in</h3>
+        <p>大邱中城青年旅舍，半月堂站步行3分鐘。</p>
+      </div>
+
+      <div class="item">
+        <div class="time">15:30 – 17:00</div>
+        <h3>金光石路</h3>
+        <p>防川市場一帶，地鐵可達。</p>
+        <div><a class="nlink" href="https://map.naver.com/p/search/%EA%B9%80%EA%B4%91%EC%84%9D%EA%B8%B8" target="_blank" rel="noopener">Naver 地圖 ↗</a></div>
+      </div>
+
+      <div class="item anchor">
+        <div class="time">18:00 – 19:00</div>
+        <h3>晚餐・東仁洞</h3>
+        <p>燉排骨或大邱烤腸。</p>
+        <span class="tag food">晚餐</span>
+        <div><a class="nlink" href="https://map.naver.com/p/search/%EB%8F%99%EC%9D%B8%EB%8F%99%EC%A9%90%EA%B0%88%EB%B9%84" target="_blank" rel="noopener">Naver 地圖 ↗</a></div>
+      </div>
+
+      <div class="item">
+        <div class="time">晚間</div>
+        <h3>早點休息</h3>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="day-section">
+    <div class="day-head">
+      <span class="day-num">DAY 2</span>
+      <h2>10月4日 週日</h2>
+      <span>The ARC · 近代街區 · 返程</span>
+    </div>
+    <div class="timeline">
+
+      <div class="item anchor">
+        <div class="time">08:00</div>
+        <h3>起床、退房</h3>
+        <p>無託運行李，背著走，不需寄放。</p>
+      </div>
+
+      <div class="item">
+        <div class="time">08:00 – 08:30</div>
+        <h3>早餐</h3>
+        <span class="tag food">早餐</span>
+      </div>
+
+      <div class="item">
+        <div class="time">08:30 – 10:00</div>
+        <h3>地鐵2號線 → 多斯站</h3>
+        <p>The ARC最後一段路線未能查到足夠把握的公車資訊，建議抵達多斯站後用Kakao Map／Naver Map現場確認轉乘或步行方式。</p>
+        <span class="tag move">移動</span>
+        <span class="tag caution">最後一哩路現場查詢</span>
+      </div>
+
+      <div class="item anchor">
+        <div class="time">10:00 – 12:30</div>
+        <h3>The ARC</h3>
+        <p>洛東江與琴湖江交會處，展廳10:00開館，3樓咖啡廳與觀景台開到22:00。</p>
+      </div>
+
+      <div class="item">
+        <div class="time">12:30 – 14:00</div>
+        <h3>返回市區、午餐</h3>
+        <p>The ARC周邊餐飲選擇少，建議回市區再吃。</p>
+        <span class="tag food">午餐</span>
+      </div>
+
+      <div class="item anchor">
+        <div class="time">15:00 – 18:00</div>
+        <h3>近代街區徒步路線</h3>
+        <p>桂山聖堂 → 3.1運動路 → 李相和・徐相敦故居 → 慶尚監營公園 → 藥令市韓醫藥博物館 → 大邱近代歷史館。全在半月堂周邊5分鐘步行圈內。</p>
+        <div><a class="nlink" href="https://map.naver.com/p/search/%EA%B3%84%EC%82%B0%EC%84%B1%EB%8B%B9" target="_blank" rel="noopener">Naver 地圖 ↗</a></div>
+      </div>
+
+      <div class="item">
+        <div class="time">18:00 – 19:00</div>
+        <h3>晚餐</h3>
+        <p>近代街區周邊，順路解決。</p>
+        <span class="tag food">晚餐</span>
+      </div>
+
+      <div class="item">
+        <div class="time">19:00 – 19:30</div>
+        <h3>公車前往機場</h3>
+        <span class="tag move">移動</span>
+      </div>
+
+      <div class="item">
+        <div class="time">19:30 – 22:50</div>
+        <h3>辦登機、通關</h3>
+        <p>約有3小時緩衝，從容不趕。</p>
+      </div>
+
+      <div class="item anchor">
+        <div class="time">22:50</div>
+        <h3>起飛，TAE → TPE</h3>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer>大邱兩天一夜 · TPE—TAE—TPE</footer>
+
+</body>
+</html>
